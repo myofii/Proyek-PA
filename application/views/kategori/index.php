@@ -53,6 +53,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Kategori</th>
+                                            <th>Gambar</th>
                                             <th class="disabled-sorting text-right">Aksi</th>
                                         </tr>
                                     </thead>
@@ -60,22 +61,30 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Kategori</th>
+                                            <th>Gambar</th>
                                             <th class="text-right">Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         <?php
-                                            $i = 1;
-                                            foreach ($kategori as $key => $value) {
+                                        $i = 1;
+                                        foreach ($kategori as $key => $value) {
                                         ?>
-                                        <tr>
-                                            <td><?=$i++?></td>
-                                            <td><?=$value->nama?></td>
-                                            <td class="text-right">
-                                                <a href="<?=site_url('kategori/ubah/' . $value->id)?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">edit</i></a>
-                                                <a href="<?=site_url('kategori/hapus/' . $value->id)?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $value->nama ?></td>
+                                                <td>
+                                                    <?php if ($value->url_gambar != null) : ?>
+                                                        <img src="<?= base_url($value->url_gambar) ?>" class="img">
+                                                    <?php else : ?>
+                                                        <p>Tidak ada gambar</p>
+                                                    <?php endif; ?>
+                                                </td>
+                                                <td class="text-right">
+                                                    <a href="<?= site_url('kategori/ubah/' . $value->id) ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">edit</i></a>
+                                                    <a href="<?= site_url('kategori/hapus/' . $value->id) ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
+                                                </td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>

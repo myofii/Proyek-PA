@@ -9,37 +9,16 @@ class penggunaModel extends CI_Model
     public $password;
     public $nama;
 
-    public function getAll()
+    public function get_where($username, $password)
     {
-        return $this->db->get($this->table)->result();
+        return $this->db->get_where($this->table, ["username" => $username, 'password' => $password])->row();
     }
 
-    public function getById($id)
+    public function insert($data)
     {
-        return $this->db->get_where($this->table, ["id" => $id])->row();
-    }
-
-    public function save()
-    {
-        $post = $this->input->post();
-        $this->username = $post["username"];
-        $this->password = $post["password"];
-        $this->nama = $post["nama"];
+        $this->username = $data["username"];
+        $this->password = $data["password"];
+        $this->nama = $data["nama"];
         $this->db->insert($this->table, $this);
-    }
-
-    public function update()
-    {
-        $post = $this->input->post();
-        $post = $this->input->post();
-        $this->username = $post["username"];
-        $this->password = $post["password"];
-        $this->nama = $post["nama"];
-        $this->db->update($this->table, $this, array('id' => $post['id']));
-    }
-
-    public function delete($id)
-    {
-        return $this->db->delete($this->table, array("id" => $id));
     }
 }

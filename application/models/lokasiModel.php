@@ -40,6 +40,7 @@
             $this->kategori = $post["kategori"];
             $this->lat_coord = $post["lat_coord"];
             $this->long_coord = $post["long_coord"];
+            $this->deskripsi = $post["deskripsi"];
             $this->db->insert($this->table, $this);
         }
 
@@ -51,6 +52,7 @@
             $this->kategori = $post["kategori"];
             $this->lat_coord = $post["lat_coord"];
             $this->long_coord = $post["long_coord"];
+            $this->deskripsi = $post["deskripsi"];
             $this->db->update($this->table, $this, array('id' => $post["id"]));
         }
 

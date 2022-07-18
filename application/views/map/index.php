@@ -121,13 +121,7 @@
 
                                 <?php foreach ($allLokasi as $key => $value) { ?>
                                     lokasi = L.marker([<?= $value->lat_coord ?>, <?= $value->long_coord ?>]).addTo(allLokasi)
-                                        .bindPopup("<h3>Detail Point</h3>" +
-                                            +"<table><tr><td>Nama Lokasi</td><td>:</td><td><?= $value->nama ?></td></tr>" +
-                                            +"<tr><td>Alamat</td><td>:</td><td><?= $value->alamat ?></td></tr>" +
-                                            +"<tr><td>Kategori</td><td>:</td><td><?= $value->nama_kategori ?></td></tr>" +
-                                            +"<tr><td>Latitude</td><td>:</td><td><?= $value->lat_coord ?></td></tr>" +
-                                            +"<tr><td>Longitude</td><td>:</td><td><?= $value->long_coord ?></td></tr>" +
-                                            +"<tr><td>Rating</td><td>:</td><td><?= $value->rating ?></td></tr></table>");
+                                        .bindPopup("<h2>Detail Point</h2><h3><img src='<?= base_url($value->background) ?>'><table><tr><td>Nama Lokasi</td><td>:</td><td><?= $value->nama ?></td></tr><tr><td>Alamat</td><td>:</td><td><?= $value->alamat ?></td></tr><tr><td>Kategori</td><td>:</td><td><?= $value->nama_kategori ?></td></tr><tr><td>Latitude</td><td>:</td><td><?= $value->lat_coord ?></td></tr><tr><td>Longitude</td><td>:</td><td><?= $value->long_coord ?></td></tr><tr><td>Rating</td><td>:</td><td><?= $value->rating ?></td></tr></h3></table>");
                                 <?php } ?>
 
                                 mymap.addLayer(allLokasi);

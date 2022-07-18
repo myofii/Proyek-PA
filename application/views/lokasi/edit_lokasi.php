@@ -39,7 +39,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <form method="post" action="<?= site_url('lokasi/edit_lokasi') ?>" class="form-horizontal">
+                        <form id="FormTambah" method="post" action="<?= site_url('lokasi/edit_lokasi') ?>" class="form-horizontal">
                             <div class="card-header card-header-text" data-background-color="rose">
                                 <h4 class="card-title">Form Ubah Lokasi</h4>
                             </div>
@@ -89,7 +89,7 @@
                                                     foreach ($kategori as $key => $value) {
                                                         if ($value->id != $lokasi->kategori) {
                                                     ?>
-                                                        <option value="<?= $value->id ?>"><?= $value->nama ?></option>
+                                                            <option value="<?= $value->id ?>"><?= $value->nama ?></option>
                                                     <?php }
                                                     } ?>
                                                 </select>
@@ -127,6 +127,15 @@
                                             <label class="col-sm-3 label-on-right">
                                                 <code>*number</code>
                                             </label>
+                                        </div>
+                                        <div class="row">
+                                            <label class="col-sm-3 label-on-left">Deskripsi</label>
+                                            <div class="col-sm-8">
+                                                <div class="form-group label-floating is-empty">
+                                                    <label class="control-label"></label>
+                                                    <input type="text" name="deskripsi" class="form-control" required="true" value="<?= $lokasi->deskripsi ?>">
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <label class="col-md-4"></label>
@@ -168,7 +177,9 @@
     L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibXlvZmlpMjEiLCJhIjoiY2w1N3Fpd241MXVjNjNwdDduaDJwdzg5ZSJ9.qu1fg1kV_P8SFC_hJ31jcw', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
             'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        id: 'mapbox/streets-v11'
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1
     }).addTo(mymap);
 
     setTimeout(function() {
@@ -197,4 +208,16 @@
         mymap.panTo(position);
     });
     mymap.addLayer(marker);
+</script>
+<script type="text/javascript">
+    function setFormValidation(id) {
+        $(id).validate({
+            errorPlacement: function(error, element) {
+                $(element).parent('div').addClass('has-error');
+            }
+        });
+    }
+    $(document).ready(function() {
+        setFormValidation('#FormTambah');
+    });
 </script>

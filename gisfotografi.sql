@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 06, 2022 at 05:42 PM
+-- Generation Time: Jul 17, 2022 at 05:16 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -33,6 +33,13 @@ CREATE TABLE `gambar` (
   `lokasi_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `gambar`
+--
+
+INSERT INTO `gambar` (`id`, `url`, `lokasi_id`) VALUES
+(9, 'uploads/Alam_Mayang_Pekanbaru-1.jpg', 4);
+
 -- --------------------------------------------------------
 
 --
@@ -41,16 +48,17 @@ CREATE TABLE `gambar` (
 
 CREATE TABLE `kategori` (
   `id` int(11) NOT NULL,
-  `nama` varchar(255) NOT NULL
+  `nama` varchar(255) NOT NULL,
+  `url_gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `kategori`
 --
 
-INSERT INTO `kategori` (`id`, `nama`) VALUES
-(1, 'Indoor'),
-(2, 'Outdoor');
+INSERT INTO `kategori` (`id`, `nama`, `url_gambar`) VALUES
+(1, 'Indoor', ''),
+(2, 'Outdoor', '');
 
 -- --------------------------------------------------------
 
@@ -66,26 +74,27 @@ CREATE TABLE `lokasi` (
   `kategori` varchar(255) NOT NULL,
   `rating` double NOT NULL,
   `lat_coord` double NOT NULL,
-  `long_coord` double NOT NULL
+  `long_coord` double NOT NULL,
+  `deskripsi` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `lokasi`
 --
 
-INSERT INTO `lokasi` (`id`, `nama`, `gambar`, `alamat`, `kategori`, `rating`, `lat_coord`, `long_coord`) VALUES
-(4, 'Alam Mayang Pekanbaru', 0, 'Jl. H. Imam Munandar, Taman Alam Mayang, Tengkerang Timur, Tenayan Raya, Kota Pekanbaru, Riau.', '2', 0, 0.4922942391907214, 101.50049310637515),
-(5, 'Taman Putri Kaca Mayang', 0, 'Jl. Jenderal Sudirman No. 474, Jadirejo, Sukajadi, Kota Pekanbaru, Riau.', '2', 0, 0.5139325677137255, 101.44832959702924),
-(6, 'Hutan Kota Pekanbaru', 0, 'Jl. Diponegoro, Suka Mulia, Sail, Kota Pekanbaru, Riau.', '2', 0, 0.5152879960694958, 101.45440003935906),
-(7, 'Danau Bandar Khayangan', 0, 'Jl. Khayangan, Rumbai Pesisir, Kota Pekanbaru, Riau.', '2', 0, 0.5854729458568471, 101.46966970819085),
-(8, 'Masjid Agung An Nur', 0, 'Jl. Hangtuah, Sumahilang, Pekanbaru Kota, Kota Pekanbaru, Riau.', '2', 0, 0.5269313091749724, 101.45092959887496),
-(9, 'Anjungan Seni Idrus Tintin', 0, 'Jl. Jenderal Sudirman, Tangkerang Selatan, Bukit Raya, Pekanbaru, Riau.', '1', 0, 0.47805599888849115, 101.45577000867831),
-(10, 'Museum Sang Nila Utama', 0, 'Jl. Jenderal Sudirman No. 194, Tengkerang Tengah, Marpoyan Damai, Kota Pekanbaru, Riau.', '1', 0, 0.49441065462423534, 101.454010725969),
-(11, 'Citraland Waterpark', 0, 'Jl. Soekarno Hatta, Kecamatan Tangkerang Barat, Marpoyan Damai, Pekanbaru, Riau.', '2', 0, 0.49044253916096286, 101.42148369721967),
-(12, 'Kuantan Regency Waterpark', 0, 'Perumahan Kuantan Regency No. 1, Jalan Satria, Rejosari, Tenayan Raya, Pekanbaru, Riau.', '2', 0, 0.5377299370613629, 101.468474098875),
-(13, 'Trans Studio Mini Pekanbaru', 0, 'Jl. Soekarno Hatta, Pekanbaru, Riau.', '1', 0, 0.5038876933282832, 101.42052441236964),
-(14, 'Perpustakaan Soeman H.S', 0, 'Jl. Jenderal Sudirman No. 462, Pekanbaru, Riau.', '1', 0, 0.5159705948537218, 101.44646765285374),
-(15, 'Arboretum Universitas Riau', 0, 'Jl. Muchtar Lutfi, Simpang Baru, Kec. Tampan, Kota Pekanbaru, Riau 28292', '2', 0, 0.478076398888269, 101.38432069702928);
+INSERT INTO `lokasi` (`id`, `nama`, `gambar`, `alamat`, `kategori`, `rating`, `lat_coord`, `long_coord`, `deskripsi`) VALUES
+(4, 'Alam Mayang Pekanbaru', 9, 'Jl. H. Imam Munandar, Taman Alam Mayang, Tengkerang Timur, Tenayan Raya, Kota Pekanbaru, Riau.', '2', 0, 0.4922942391907214, 101.50049310637515, ''),
+(5, 'Taman Putri Kaca Mayang', 0, 'Jl. Jenderal Sudirman No. 474, Jadirejo, Sukajadi, Kota Pekanbaru, Riau.', '2', 0, 0.5139325677137255, 101.44832959702924, ''),
+(6, 'Hutan Kota Pekanbaru', 0, 'Jl. Diponegoro, Suka Mulia, Sail, Kota Pekanbaru, Riau.', '2', 0, 0.5152879960694958, 101.45440003935906, ''),
+(7, 'Danau Bandar Khayangan', 0, 'Jl. Khayangan, Rumbai Pesisir, Kota Pekanbaru, Riau.', '2', 0, 0.5854729458568471, 101.46966970819085, ''),
+(8, 'Masjid Agung An Nur', 0, 'Jl. Hangtuah, Sumahilang, Pekanbaru Kota, Kota Pekanbaru, Riau.', '2', 0, 0.5269313091749724, 101.45092959887496, ''),
+(9, 'Anjungan Seni Idrus Tintin', 0, 'Jl. Jenderal Sudirman, Tangkerang Selatan, Bukit Raya, Pekanbaru, Riau.', '1', 0, 0.47805599888849115, 101.45577000867831, ''),
+(10, 'Museum Sang Nila Utama', 0, 'Jl. Jenderal Sudirman No. 194, Tengkerang Tengah, Marpoyan Damai, Kota Pekanbaru, Riau.', '1', 0, 0.49441065462423534, 101.454010725969, ''),
+(11, 'Citraland Waterpark', 0, 'Jl. Soekarno Hatta, Kecamatan Tangkerang Barat, Marpoyan Damai, Pekanbaru, Riau.', '2', 0, 0.49044253916096286, 101.42148369721967, ''),
+(12, 'Kuantan Regency Waterpark', 0, 'Perumahan Kuantan Regency No. 1, Jalan Satria, Rejosari, Tenayan Raya, Pekanbaru, Riau.', '2', 0, 0.5377299370613629, 101.468474098875, ''),
+(13, 'Trans Studio Mini Pekanbaru', 0, 'Jl. Soekarno Hatta, Pekanbaru, Riau.', '1', 0, 0.5038876933282832, 101.42052441236964, ''),
+(14, 'Perpustakaan Soeman H.S', 0, 'Jl. Jenderal Sudirman No. 462, Pekanbaru, Riau.', '1', 0, 0.5159705948537218, 101.44646765285374, ''),
+(15, 'Arboretum Universitas Riau', 0, 'Jl. Muchtar Lutfi, Simpang Baru, Kec. Tampan, Kota Pekanbaru, Riau 28292', '2', 0, 0.478076398888269, 101.38432069702928, '');
 
 -- --------------------------------------------------------
 
@@ -20350,19 +20359,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `gambar`
 --
 ALTER TABLE `gambar`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `kategori`
 --
 ALTER TABLE `kategori`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `lokasi`
 --
 ALTER TABLE `lokasi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `rating`

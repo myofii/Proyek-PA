@@ -39,18 +39,51 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="card">
-                        <form method="post" action="<?=site_url('kategori/tambah')?>" class="form-horizontal">
+                        <form id="FormTambah" method="post" action="<?= site_url('kategori/tambah') ?>" enctype="multipart/form-data" class="form-horizontal">
                             <div class="card-header card-header-text" data-background-color="rose">
                                 <h4 class="card-title">Form Tambah Kategori</h4>
                             </div>
                             <div class="card-content">
                                 <div class="row">
+                                    <?php
+                                    echo validation_errors('<div class="alert alert-rose">
+                                                        <button type="button" data-dismiss="alert" aria-hidden="true" class="close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                        <span>', '</span>
+                                                    </div>');
+                                    if ($this->session->flashdata('pesan')) {
+                                        echo '<div class="alert alert-success">
+                                                        <button type="button" data-dismiss="alert" aria-hidden="true" class="close">
+                                                            <i class="material-icons">close</i>
+                                                        </button>
+                                                        <span><strong>
+                                                            ' . $this->session->flashdata('pesan') . '
+                                                        </strong></span>
+                                                    </div>';
+                                    }
+                                    ?>
                                     <label class="col-sm-4 label-on-left">Nama Kategori</label>
                                     <div class="col-sm-6">
                                         <div class="form-group label-floating is-empty">
                                             <label class="control-label"></label>
-                                            <input type="text" name="nama_kategori" class="form-control" value>
+                                            <input type="text" name="nama_kategori" class="form-control" required="true" value="<?=set_value("nama_kategori")?>">
                                             <!-- <span class="help-block">A block of help text that breaks onto a new line.</span> -->
+                                        </div>
+                                    </div>
+                                    <label class="col-sm-4 label-on-left">Gambar</label>
+                                    <div class="fileinput fileinput-new text-center col-sm-6" data-provides="fileinput">
+                                        <div class="fileinput-new thumbnail">
+                                            <img src="<?= base_url() ?>assets/assets/img/image_placeholder.jpg" alt="...">
+                                        </div>
+                                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                        <div>
+                                            <span class="btn btn-primary btn-round btn-file">
+                                                <span class="fileinput-new">Select image</span>
+                                                <span class="fileinput-exists">Change</span>
+                                                <input type="file" name="url_gambar" />
+                                            </span>
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                         </div>
                                     </div>
                                     <label class="col-md-4"></label>
@@ -80,3 +113,15 @@
         </div>
     </footer>
 </div>
+<script type="text/javascript">
+    function setFormValidation(id) {
+        $(id).validate({
+            errorPlacement: function(error, element) {
+                $(element).parent('div').addClass('has-error');
+            }
+        });
+    }
+    $(document).ready(function() {
+        setFormValidation('#FormTambah');
+    });
+</script>

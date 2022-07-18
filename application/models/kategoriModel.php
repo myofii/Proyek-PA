@@ -16,18 +16,14 @@
             return $this->db->get_where($this->table, ["id" => $id])->row();
         }
         
-        public function save()
+        public function save($data)
         {
-            $post = $this->input->post();
-            $this->nama = $post["nama_kategori"];
-            $this->db->insert($this->table, $this);
+            $this->db->insert($this->table, $data);
         }
 
-        public function update()
+        public function update($data,$id)
         {
-            $post = $this->input->post();
-            $this->nama = $post["nama_kategori"];
-            $this->db->update($this->table, $this, array('id' => $post['id']));
+            $this->db->update($this->table, $data, array('id' => $id));
         }
 
         public function delete($id)
