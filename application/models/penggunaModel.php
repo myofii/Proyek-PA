@@ -9,6 +9,11 @@ class penggunaModel extends CI_Model
     public $password;
     public $nama;
 
+    public function getAll()
+    {
+        return $this->db->get($this->table)->result();
+    }
+    
     public function get_where($username, $password)
     {
         return $this->db->get_where($this->table, ["username" => $username, 'password' => $password])->row();

@@ -133,7 +133,7 @@
                                             <div class="col-sm-8">
                                                 <div class="form-group label-floating is-empty">
                                                     <label class="control-label"></label>
-                                                    <input type="text" name="deskripsi" class="form-control" required="true" value="<?= $lokasi->deskripsi ?>">
+                                                    <input type="text" name="deskripsi" class="form-control" value="<?= $lokasi->deskripsi ?>">
                                                 </div>
                                             </div>
                                         </div>

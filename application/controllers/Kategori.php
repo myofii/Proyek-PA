@@ -81,8 +81,9 @@ class Kategori extends CI_Controller
         if ($this->input->post()) {
             if (!empty($_FILES)) {
                 $gambar = $kategori->getById($this->input->post('id'));
-                unlink($gambar->url_gambar);
-
+                if ($gambar->url_gambar != null) {
+                    unlink($gambar->url_gambar);
+                }
                 $ext = explode('.', $_FILES["url_gambar"]['name']);
                 $ext = $ext[count($ext) - 1];
                 $new_name = $this->input->post('nama_kategori') . "." . $ext;

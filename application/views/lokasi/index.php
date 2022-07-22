@@ -99,7 +99,7 @@
                                                 <td><?= $value->nama ?></td>
                                                 <td><?= $value->nama_kategori ?></td>
                                                 <td><?= $value->alamat ?></td>
-                                                <td>
+                                                <td style="width:150px;">
                                                     <?php if ($value->gambar != 0) : ?>
                                                         <img src="<?= base_url($value->background) ?>" class="img">
                                                     <?php else : ?>
@@ -109,7 +109,7 @@
                                                 <td><?= $value->lat_coord ?></td>
                                                 <td><?= $value->long_coord ?></td>
                                                 <td class="text-right">
-                                                    <a href="#" class="btn btn-simple btn-info btn-icon info"><i class="material-icons">info</i></a>
+                                                    <!-- <a href="#" class="btn btn-simple btn-info btn-icon info"><i class="material-icons">info</i></a> -->
                                                     <a href="<?= site_url('lokasi/gambar/' . $value->id) ?>" class="btn btn-simple btn-primary btn-icon image"><i class="material-icons">image</i></a>
                                                     <a href="<?= site_url('lokasi/edit_lokasi/' . $value->id) ?>" class="btn btn-simple btn-warning btn-icon edit"><i class="material-icons">edit</i></a>
                                                     <a href="<?= site_url('lokasi/hapus/' . $value->id) ?>" class="btn btn-simple btn-danger btn-icon remove"><i class="material-icons">close</i></a>
