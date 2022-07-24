@@ -102,9 +102,18 @@ class Lokasi extends CI_Controller
 
     public function hapus($id) 
     {
-        $this->lokasiModel->delete($id);
-        $this->session->set_flashdata('pesan', 'Data berhasil dihapus');
-        redirect('lokasi');
+        if (isset($id)) {
+            $data = $this->gambarModel->getAll($id);
+            foreach ($data as $key => $value) {
+                unlink('uploads/'.$value->url);
+            }
+            $this->lokasiModel->delete($id);
+            $this->gambarModel->deleteGambar($id);
+            $this->session->set_flashdata('pesan', 'Data berhasil dihapus');
+            redirect('lokasi');
+        } else {
+            show_404();
+        }
     }
 
     public function gambar($id) 
@@ -167,7 +176,7 @@ class Lokasi extends CI_Controller
         if ($lokasi->gambar == $id) {
             $this->lokasiModel->updateGambar(["gambar" => 0], ["id" => $lokasiId]);
         }
-        unlink($gambar->url);
+        unlink('uploads/'.$gambar->url);
         $this->gambarModel->deleteGambar(["id" => $id]);
         redirect('lokasi/gambar/' . $lokasiId);
     }
@@ -201,7 +210,7 @@ class Lokasi extends CI_Controller
             return array("status" => false, "error" => $error);
         } else {
             echo "berhasil";
-            return array("status" => true, "pic" => $config['upload_path'] . $new_name);
+            return array("status" => true, "pic" => $new_name);
         }
     }
 }

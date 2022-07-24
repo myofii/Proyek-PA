@@ -64,7 +64,7 @@ class Kategori extends CI_Controller
 
                 $data = [
                     "nama" => $this->input->post('nama_kategori'),
-                    "url_gambar"    => $config['upload_path'] . $new_name
+                    "url_gambar"    => $new_name
                 ];
 
                 $kategori = $this->kategoriModel;
@@ -82,7 +82,7 @@ class Kategori extends CI_Controller
             if (!empty($_FILES)) {
                 $gambar = $kategori->getById($this->input->post('id'));
                 if ($gambar->url_gambar != null) {
-                    unlink($gambar->url_gambar);
+                    unlink('uploads/kategori/' . $gambar->url_gambar);
                 }
                 $ext = explode('.', $_FILES["url_gambar"]['name']);
                 $ext = $ext[count($ext) - 1];
@@ -105,7 +105,7 @@ class Kategori extends CI_Controller
 
                 $data = [
                     "nama"          => $this->input->post('nama_kategori'),
-                    "url_gambar"    => $config['upload_path'] . $new_name
+                    "url_gambar"    => $new_name
                 ];
             } else {
                 $data = [
@@ -134,7 +134,7 @@ class Kategori extends CI_Controller
         if (!isset($id)) show_404();
 
         $gambar = $this->kategoriModel->getById($id);
-        unlink($gambar->url_gambar);
+        unlink('uploads/kategori/' . $gambar->url_gambar);
         if ($this->kategoriModel->delete($id)) {
             redirect(site_url('kategori/index'));
         }

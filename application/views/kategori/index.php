@@ -75,7 +75,7 @@
                                                 <td><?= $value->nama ?></td>
                                                 <td>
                                                     <?php if ($value->url_gambar != null) : ?>
-                                                        <img src="<?= base_url($value->url_gambar) ?>" class="img">
+                                                        <img src="<?= base_url('uploads/kategori/'.$value->url_gambar) ?>" class="img">
                                                     <?php else : ?>
                                                         <p>Tidak ada gambar</p>
                                                     <?php endif; ?>

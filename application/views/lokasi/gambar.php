@@ -80,7 +80,7 @@
                                         ?>
                                             <tr>
                                                 <td><?= $no++ ?></td>
-                                                <td><img class="img" src="<?= base_url($value->url) ?>"></td>
+                                                <td><img class="img" src="<?= base_url('uploads/'.$value->url) ?>"></td>
                                                 <td><?= $badge ?></td>
                                                 <td><?= $value->nama_lokasi ?></td>
                                                 <td class="text-right">

@@ -37,8 +37,8 @@ class gambarModel extends CI_Model
         return $this->db->update($this->table, $dataGambar, $where);
     }
 
-    public function deleteGambar($where)
+    public function deleteGambar($lokasi_id)
     {
-        return $this->db->delete($this->table, $where);
+        return $this->db->delete($this->table, $lokasi_id);
     }
 }

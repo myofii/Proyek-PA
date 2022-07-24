@@ -76,7 +76,7 @@
                                     <div class="fileinput fileinput-new text-center col-sm-6" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail">
                                             <?php if ($kategori->url_gambar != null) : ?>
-                                                <img src="<?= base_url($kategori->url_gambar) ?>" class="img">
+                                                <img src="<?= base_url('uploads/kategori/'.$kategori->url_gambar) ?>" class="img">
                                             <?php else : ?>
                                                 <img src="<?= base_url() ?>assets/assets/img/image_placeholder.jpg" alt="...">
                                             <?php endif; ?>

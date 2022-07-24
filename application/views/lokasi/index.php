@@ -101,7 +101,7 @@
                                                 <td><?= $value->alamat ?></td>
                                                 <td style="width:150px;">
                                                     <?php if ($value->gambar != 0) : ?>
-                                                        <img src="<?= base_url($value->background) ?>" class="img">
+                                                        <img src="<?= base_url('uploads/' . $value->background) ?>" class="img">
                                                     <?php else : ?>
                                                         <p>Tidak ada gambar</p>
                                                     <?php endif; ?>
