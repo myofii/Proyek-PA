@@ -2,6 +2,9 @@
 
 class ratingModel extends CI_Model
 {
+
+    private $table = "rating";
+
     public $rating;
     public $lokasi_id;
     public $user_id;

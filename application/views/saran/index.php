@@ -67,7 +67,7 @@
                                         ?>
                                         <tr>
                                             <td><?=$value->nama_user?></td>
-                                            <td><?=$value->pesan?>/td>
+                                            <td><?=$value->pesan?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>

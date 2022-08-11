@@ -136,7 +136,7 @@
                                             <label class="col-md-4"></label>
                                             <div class="col-md-6">
                                                 <div class="form-group form-button">
-                                                    <button type="submit" class="btn btn-fill btn-rose">Submit</button>
+                                                    <button type="submit" class="btn btn-fill btn-rose">Tambah</button>
                                                 </div>
                                             </div>
                                         </div>

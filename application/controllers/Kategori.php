@@ -28,12 +28,6 @@ class Kategori extends CI_Controller
         $this->form_validation->set_rules('nama_kategori', '<strong>Nama Kategori', 'required', array(
             'required' => '%s harus diisi</strong>'
         ));
-        // if (empty($_FILES['url_gambar']['name'])) {
-        //     $this->form_validation->set_rules('url_gambar', '<strong>Gambar', 'required', array(
-        //         'required' => '%s harus diisi!</strong>'
-        //     ));
-        // }
-
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = "Tambah Kategori";
             $data['active'] = "kategori";
@@ -46,6 +40,7 @@ class Kategori extends CI_Controller
                 $ext = explode('.', $_FILES["url_gambar"]['name']);
                 $ext = $ext[count($ext) - 1];
                 $new_name = $this->input->post('nama_kategori') . "." . $ext;
+                $new_name = str_replace(" ", "_", $new_name);
 
                 $config['upload_path']          = 'uploads/kategori/';
                 $config['allowed_types']        = 'jpg|jpeg|png';
@@ -79,7 +74,7 @@ class Kategori extends CI_Controller
     {
         $kategori = $this->kategoriModel;
         if ($this->input->post()) {
-            if (!empty($_FILES)) {
+            if ($_FILES["url_gambar"]['size'] != 0) {
                 $gambar = $kategori->getById($this->input->post('id'));
                 if ($gambar->url_gambar != null) {
                     unlink('uploads/kategori/' . $gambar->url_gambar);

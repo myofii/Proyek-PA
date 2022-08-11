@@ -27,6 +27,11 @@
             return $this->db->get_where($this->table, array('k.id' => $kategori_id))->result();
         }
 
+        public function getLokasiKategori($kategori_id)
+        {
+            return $this->db->query("SELECT lokasi.*, kategori.nama as nama_kategori, gambar.url as background FROM lokasi, kategori, gambar WHERE lokasi.kategori = kategori.id AND gambar.id = lokasi.gambar AND lokasi.kategori = $kategori_id")->result();
+        }
+
         public function getById($id)
         {
             return $this->db->query("SELECT lokasi.*, kategori.nama as nama_kategori, gambar.url as background FROM lokasi, kategori, gambar WHERE lokasi.kategori = kategori.id AND gambar.id = lokasi.gambar AND lokasi.id = $id")->row();

@@ -53,7 +53,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Nama Kategori</th>
-                                            <th>Gambar</th>
+                                            <th style="width:150px;">Gambar</th>
                                             <th class="disabled-sorting text-right">Aksi</th>
                                         </tr>
                                     </thead>
@@ -75,7 +75,7 @@
                                                 <td><?= $value->nama ?></td>
                                                 <td>
                                                     <?php if ($value->url_gambar != null) : ?>
-                                                        <img src="<?= base_url('uploads/kategori/'.$value->url_gambar) ?>" class="img">
+                                                        <img src="<?= base_url('uploads/kategori/' . $value->url_gambar) ?>" class="img">
                                                     <?php else : ?>
                                                         <p>Tidak ada gambar</p>
                                                     <?php endif; ?>

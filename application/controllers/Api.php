@@ -15,22 +15,31 @@ class Api extends CI_Controller
         $this->load->model("penggunaModel");
     }
 
-    function getLokasi($id = null) 
+    function getLokasi($id = null)
     {
         header("Access-Control-Allow-Origin: *");
         if ($id == null) {
             $data = $this->lokasiModel->getAll();
         } else {
-            $data = $this->lokasiModel->getById($id);
+            $data = [$this->lokasiModel->getById($id)];
         }
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        $this->output->set_content_type('application/json')->set_output(json_encode(["status" => "success", "data" => $data]));
+    }
+
+    function getLokasiByKategori($kategoriId = null)
+    {
+        header("Access-Control-Allow-Origin: *");
+        if ($kategoriId != null) {
+            $data = $this->lokasiModel->getLokasiKategori($kategoriId);
+        }
+        $this->output->set_content_type('application/json')->set_output(json_encode(["status" => "success", "data" => $data]));
     }
 
     function getGambarByLokasi($id)
     {
         header("Access-Control-Allow-Origin: *");
         $data = $this->gambarModel->getAll($id);
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        $this->output->set_content_type('application/json')->set_output(json_encode(["status" => "success", "data" => $data]));
     }
 
     function getKategori($id = null)
@@ -41,14 +50,20 @@ class Api extends CI_Controller
         } else {
             $data = $this->kategoriModel->getById($id);
         }
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        $this->output->set_content_type('application/json')->set_output(json_encode(["status" => "success", "data" => $data]));
     }
 
     function getUser($username, $password)
     {
         header("Access-Control-Allow-Origin: *");
         $data = $this->penggunaModel->get_where($username, $password);
-        $this->output->set_content_type('application/json')->set_output(json_encode($data));
+        if ($data != null) {
+            $response = array(
+                'status' => 'success',
+                'data' => [$data]
+            );
+        } else $response = array('status' => 'error', 'data' => null);
+        $this->output->set_content_type('application/json')->set_output(json_encode($response));
     }
 
     function createUser()
@@ -65,7 +80,7 @@ class Api extends CI_Controller
                 'status' => 'success',
                 'message' => 'Data berhasil ditambahkan'
             );
-        } else    $response = array('status' => 'error');
+        } else    $response = array('status' => 'error', 'message' => 'Data gagal ditambahkan');
 
         $this->output->set_content_type('application/json')->set_output(json_encode($response));
     }

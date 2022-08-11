@@ -127,7 +127,7 @@
                     <li class=" <?= ($active == "map") ? "active" : "" ?>">
                         <a href="<?= site_url('map') ?>">
                             <i class="material-icons">explore</i>
-                            <p>Maps</p>
+                            <p>Peta</p>
                         </a>
                     </li>
                     <li class=" <?= ($active == "pengguna") ? "active" : "" ?>">

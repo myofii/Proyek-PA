@@ -76,7 +76,7 @@
                                     <div class="fileinput fileinput-new text-center col-sm-6" data-provides="fileinput">
                                         <div class="fileinput-new thumbnail">
                                             <?php if ($kategori->url_gambar != null) : ?>
-                                                <img src="<?= base_url('uploads/kategori/'.$kategori->url_gambar) ?>" class="img">
+                                                <img src="<?= base_url('uploads/kategori/' . $kategori->url_gambar) ?>" class="img">
                                             <?php else : ?>
                                                 <img src="<?= base_url() ?>assets/assets/img/image_placeholder.jpg" alt="...">
                                             <?php endif; ?>
@@ -84,17 +84,17 @@
                                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                         <div>
                                             <span class="btn btn-primary btn-round btn-file">
-                                                <span class="fileinput-new">Select image</span>
-                                                <span class="fileinput-exists">Change</span>
+                                                <span class="fileinput-new">Pilih Gambar</span>
+                                                <span class="fileinput-exists">Ubah</span>
                                                 <input type="file" name="url_gambar" />
                                             </span>
-                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                            <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Hapus</a>
                                         </div>
                                     </div>
                                     <label class="col-md-4"></label>
                                     <div class="col-md-6">
                                         <div class="form-group form-button">
-                                            <button type="submit" class="btn btn-fill btn-rose">Submit</button>
+                                            <button type="submit" class="btn btn-fill btn-rose">Simpan</button>
                                         </div>
                                     </div>
                                 </div>
